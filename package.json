@@ -1,0 +1,21 @@
+{
+  "name": "sgr-parser",
+  "version": "0.0.1",
+  "description": "Parse escape sequence for console. (Especially for SGR)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha"
+  },
+  "keywords": [
+    "sgr",
+    "escape"
+  ],
+  "author": "Shunji Konishi",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "typescript": "^2.7.2"
+  }
+}
