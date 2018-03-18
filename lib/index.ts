@@ -80,13 +80,15 @@ export class Line {
 
 export class SGRParser {
   private classes: Array<string> = [];
+  private newLine: boolean = false;
   private state: TokenState = TokenState.Normal;
   private options: Array<number> = [];
 
   constructor(private keepState: boolean, private handleCR: boolean) {}
 
   parse(line: string): Array<Line> {
-    var newLine = false;
+    var classes = this.classes.concat([]);
+    var newLine = this.newLine;
     const ret: Array<Line> = [];
     this.tokenize(line).forEach(token => {
       switch(token.tokenType) {
@@ -99,7 +101,7 @@ export class SGRParser {
             nextNewLine = true;
           }
           lines.forEach((str, index) => {
-            ret.push(new Line(str, this.classes.join(" "), newLine, false));
+            ret.push(new Line(str, classes.join(" "), newLine, false));
             newLine = true;
           });
           newLine = nextNewLine;
@@ -116,21 +118,21 @@ export class SGRParser {
               if (escapeToken.options.length > 0) {
                 switch (escapeToken.options[0]) {
                   case 0:
-                    this.classes = [];
+                    classes = [];
                     break;
                   case 39:
-                    this.classes = this.classes.filter(v => {
+                    classes = classes.filter(v => {
                       return v.indexOf("sgr-3") === 0 && v !== "sgr-3-m";
                     });
                     break;
                   case 49:
-                    this.classes = this.classes.filter(v => {
+                    classes = this.classes.filter(v => {
                       return v.indexOf("sgr-4") === 0 && v !== "sgr-4-m";
                     });
                     break;
                   default:
                     escapeToken.options.forEach(n => {
-                      this.classes.push(`sgr-${n}-m`);
+                      classes.push(`sgr-${n}-m`);
                     });
                     break;
                 }
@@ -140,7 +142,11 @@ export class SGRParser {
           break;
       }
     });
-    return ret;
+   if (this.keepState) {
+      this.classes = classes;
+      this.newLine = newLine;
+    }
+     return ret;
   }
 
   tokenize(line: string): Array<IToken> {
