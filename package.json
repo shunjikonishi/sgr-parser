@@ -1,6 +1,6 @@
 {
   "name": "sgr-parser",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Parse escape sequence for console. (Especially for SGR)",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
