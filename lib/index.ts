@@ -129,7 +129,9 @@ export class SGRParser {
                     });
                     break;
                   default:
-                    this.classes.push("sgr-" + escapeToken.options.join("-") + "-m");
+                    escapeToken.options.forEach(n => {
+                      this.classes.push(`sgr-${n}-m`);
+                    });
                     break;
                 }
               }

@@ -1,0 +1,87 @@
+.sgr-1-m {
+  font-weight: bold;
+}
+
+.sgr-3-m {
+  font-style: italic;
+}
+
+.sgr-4-m {
+  text-decoration: underline;
+}
+
+.sgr-5-m, .sgr-6-m {
+  text-decoration: blink;
+}
+
+.sgr-8-m {
+  visibility: hidden;
+}
+
+.sgr-9-m {
+  text-decoration: line-through;
+}
+
+.sgr-30-m {
+  color: #2E3436;
+}
+
+.sgr-31-m {
+  color: #CA0813;
+}
+
+.sgr-32-m {
+  color: #50981C;
+}
+
+.sgr-33-m {
+  color: #C39F22;
+}
+
+.sgr-34-m {
+  color: #3766A2;
+}
+
+.sgr-35-m {
+  color: #74517A;
+}
+
+.sgr-36-m {
+  color: #199899;
+}
+
+.sgr-37-m {
+  color: #D3D7D0;
+}
+
+.sgr-40-m {
+  background-color: #2E3436;
+}
+
+.sgr-41-m {
+  background-color: #CA0813;
+}
+
+.sgr-42-m {
+  background-color: #50981C;
+}
+
+.sgr-43-m {
+  background-color: #C39F22;
+}
+
+.sgr-44-m {
+  background-color: #3766A2;
+}
+
+.sgr-45-m {
+  background-color: #74517A;
+}
+
+.sgr-46-m {
+  background-color: #199899;
+}
+
+.sgr-47-m {
+  background-color: #D3D7D0;
+}
