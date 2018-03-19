@@ -1,6 +1,6 @@
 {
   "name": "sgr-parser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Parse escape sequence for console. (Especially for SGR)",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -12,6 +12,10 @@
     "sgr",
     "escape"
   ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/shunjikonishi/sgr-parser.git"
+  },
   "author": "Shunji Konishi",
   "license": "ISC",
   "devDependencies": {
