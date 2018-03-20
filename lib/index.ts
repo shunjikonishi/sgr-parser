@@ -111,7 +111,8 @@ export class SGRParser {
           switch (escapeToken.code) {
             case CODE_K:
               if (escapeToken.options.length === 1 && escapeToken.options[0] === 2) {
-                ret.push(new Line("", "", false, true));
+                ret.push(new Line("", "", newLine, !newLine));
+                newLine = false;
               }
               break;
             case CODE_m:

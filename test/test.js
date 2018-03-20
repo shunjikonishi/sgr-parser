@@ -114,3 +114,42 @@ describe("SGRParser#parse", () => {
     assert.equal(lines[2].removeLine, false);
   });
 });
+
+describe("Edge case", () => {
+  it("must handle LF only", () => {
+    const input1 = "\n";
+    const input2 = "hoge";
+    const parser = new SGRParser(true, true);
+    const lines = parser.parse(input1).concat(parser.parse(input2));
+
+    assert.equal(lines.length, 2);
+    assert.equal(lines[0].str, "");
+    assert.equal(lines[0].classname, "");
+    assert.equal(lines[0].newLine, false);
+    assert.equal(lines[0].removeLine, false);
+    assert.equal(lines[1].str, "hoge");
+    assert.equal(lines[1].classname, "");
+    assert.equal(lines[1].newLine, true);
+    assert.equal(lines[1].removeLine, false);
+  });
+  it("must handle LF only", () => {
+    const input1 = "\n";
+    const input2 = "\rhoge";
+    const parser = new SGRParser(true, true);
+    const lines = parser.parse(input1).concat(parser.parse(input2));
+
+    assert.equal(lines.length, 3);
+    assert.equal(lines[0].str, "");
+    assert.equal(lines[0].classname, "");
+    assert.equal(lines[0].newLine, false);
+    assert.equal(lines[0].removeLine, false);
+    assert.equal(lines[1].str, "");
+    assert.equal(lines[1].classname, "");
+    assert.equal(lines[1].newLine, true);
+    assert.equal(lines[1].removeLine, false);
+    assert.equal(lines[2].str, "hoge");
+    assert.equal(lines[2].classname, "");
+    assert.equal(lines[2].newLine, false);
+    assert.equal(lines[2].removeLine, false);
+  });
+});
