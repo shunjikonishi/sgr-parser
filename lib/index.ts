@@ -131,6 +131,10 @@ export class SGRParser {
                       return v.indexOf("sgr-4") === 0 && v !== "sgr-4-m";
                     });
                     break;
+                  case 38:
+                  case 48:
+                    classes.push(`sgr-${escapeToken.options.join("-")}-m`)
+                    break;
                   default:
                     escapeToken.options.forEach(n => {
                       classes.push(`sgr-${n}-m`);

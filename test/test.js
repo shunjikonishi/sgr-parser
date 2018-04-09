@@ -83,6 +83,28 @@ describe("SGRParser#parse", () => {
     assert.equal(lines[0].removeLine, false);
   });
 
+  it("must parse escape with 38m", () => {
+    const input1 = "\u001b[38;2;1mtest\u001b[0m";
+    const parser = new SGRParser(true, true);
+    const lines = parser.parse(input1);
+    assert.equal(lines.length, 1);
+    assert.equal(lines[0].str, "test");
+    assert.equal(lines[0].classname, "sgr-38-2-1-m");
+    assert.equal(lines[0].newLine, false);
+    assert.equal(lines[0].removeLine, false);
+  });
+
+  it("must parse escape with multi m", () => {
+    const input1 = "\u001b[31;1;4mtest\u001b[0m";
+    const parser = new SGRParser(true, true);
+    const lines = parser.parse(input1);
+    assert.equal(lines.length, 1);
+    assert.equal(lines[0].str, "test");
+    assert.equal(lines[0].classname, "sgr-31-m sgr-1-m sgr-4-m");
+    assert.equal(lines[0].newLine, false);
+    assert.equal(lines[0].removeLine, false);
+  });
+
   it("must parse with lf", () => {
     const input1 = "\u001b[31mtest\ntest\u001b[0m";
     const parser = new SGRParser(true, true);
